@@ -1,0 +1,14 @@
+
+# Compiled Go binary
+*.out
+*.test
+/bin
+# Log files and results of running go test
+/log/
+/test_results/
+# Dependencies
+
+# IDE-specific directories and files
+.idea/
+.vscode/
+

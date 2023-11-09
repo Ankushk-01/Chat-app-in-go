@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option go_package = "chat/Chat/Chat/";
+
+package Chat;
+
+message sendMessageRequest{
+    string reciever = 1;
+    string text = 2;
+    string sender = 3;
+}
+
+message sendMessageResponse{
+    bool status = 1;
+}
+
+message recieveMessageRequest {
+    string ClientID = 1;
+}
+
+message recieveMessageResponse{
+    string Sender = 1;
+    string text = 2;
+}
+message registerRequest{
+    string username = 1;
+    string email = 2;
+
+}
+
+message registerResponse{
+    string userId = 1;
+}
+
+message ChatRequest{
+    string ClientID = 1;
+    string sender  = 2;
+    string Msg = 3;
+}
+
+message ChatResponse{
+    string sender = 1;
+    string Msg = 2;
+}
+service Message{
+    rpc register(registerRequest) returns(registerResponse) {}
+    rpc sendMessage(stream sendMessageRequest) returns (sendMessageResponse) {}
+    rpc recieveMessage(recieveMessageRequest) returns ( stream recieveMessageResponse){}
+    rpc Chat(stream ChatRequest) returns (stream ChatResponse){}
+}
+
